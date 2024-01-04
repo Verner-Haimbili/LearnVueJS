@@ -3,15 +3,29 @@
 
 <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div id="app">
         {{ message }}<br> {{ name }}<br> The final price is: {{ discount(200) }}
         <br> <img v-bind:src="path"><br>
-        <a v-bind:href="link">Link to Google</a><br> {{ ackn }}
-    </div>
+        <a v-bind:href="link">Link to Google</a><br> {{ ackn }}<br>
+        <br> <br>Temperature changer: <button v-on:click="decrease">-</button> {{ temp }}
+        <button v-on:click="increase">+</button>
+        <br> <br>Key Events textbox (view output on developer console):
+        <input type="text" v-on:keyup="keypressed" />
+        <br> <br>Data binding textbox: <input type="text" v-model="dataToDisplay" /> {{ dataToDisplay }}
 
+        <div v-bind:class="{status:status}">
+            <br> Dynamic class
+        </div>
+        <button v-on:click="status=!status">Click Here</button> <br>
+        <br> <br>Think of How a Gate remote works!!
+        <h1 v-if="gate">Gate is Open</h1>
+        <h1 v-else-if="!gate">Gate is Closed</h1>
+        <button v-on:click="gate=!gate">Open/Close</button>
+    </div>
     <script type="text/javascript" src="index.js"></script>
 </body>
 
